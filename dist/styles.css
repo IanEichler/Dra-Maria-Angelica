@@ -121,3 +121,25 @@ h2{font-size:clamp(40px,3.8vw,57px)}
   .hero-description{font-size:.875rem}
   .hero-image{height:490px}
 }
+
+/* Motion system: calm entrances that support the page hierarchy. */
+@keyframes hero-image-in{from{opacity:.35;transform:scale(1.035)}to{opacity:1;transform:scale(1)}}
+@keyframes hero-content-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes menu-in{from{opacity:0;transform:translateY(-10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.hero-image{animation:hero-image-in 1.35s cubic-bezier(.22,.7,.2,1) both}
+.hero-copy>*{animation:hero-content-in .72s cubic-bezier(.2,.72,.25,1) both}
+.hero-copy>*:nth-child(1){animation-delay:.12s}
+.hero-copy>*:nth-child(2){animation-delay:.22s}
+.hero-copy>*:nth-child(3){animation-delay:.34s}
+.hero-copy>*:nth-child(4){animation-delay:.46s}
+.hero-copy>*:nth-child(5){animation-delay:.54s}
+.hero-copy>*:nth-child(6){animation-delay:.62s}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.2,.72,.25,1) var(--reveal-delay,0ms),transform .75s cubic-bezier(.2,.72,.25,1) var(--reveal-delay,0ms)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.about-photo.reveal{transform:translateY(24px) scale(.975)}
+.about-photo.reveal.is-visible{transform:translateY(0) scale(1)}
+.care-card.reveal.is-visible:hover{transform:translateY(-5px)}
+.button span,.nav-contact span,.text-link span,.service-arrow,.link-arrow{transition:transform .22s ease}
+.button:hover span,.nav-contact:hover span,.text-link:hover span,.service-item:hover .service-arrow,.link-card:hover .link-arrow{transform:translate(3px,-2px)}
+@media(max-width:760px){.navigation nav.open{animation:menu-in .22s ease-out both}}
+@media(prefers-reduced-motion:reduce){.hero-image,.hero-copy>*{animation:none!important}.reveal,.reveal.is-visible,.about-photo.reveal,.about-photo.reveal.is-visible{opacity:1!important;transform:none!important;transition:none!important}}
