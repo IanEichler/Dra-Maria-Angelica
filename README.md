@@ -13,6 +13,7 @@ O arquivo `vercel.json` já seleciona o preset **Other** e define `dist` como di
 ## Estrutura
 
 - `dist/index.html`: página principal.
+- `dist/links/index.html`: página de Instagram e WhatsApp.
 - `dist/styles.css`: estilos e responsividade.
 - `dist/script.js`: comportamento do menu.
 - `dist/assets`: imagens e ícone do site.
