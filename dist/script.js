@@ -18,4 +18,36 @@ document.addEventListener('keydown', event => {
 document.addEventListener('click', event => {
   if (!event.target.closest('.navigation')) closeMenu();
 });
+
+const header = document.querySelector('.site-header');
+const sectionLinks = [...navigation.querySelectorAll('a[href^="#"]')];
+const linkedSections = sectionLinks
+  .map(link => document.querySelector(link.getAttribute('href')))
+  .filter(Boolean);
+
+function updateNavigationState() {
+  header.classList.toggle('scrolled', window.scrollY > 16);
+
+  const marker = window.scrollY + window.innerHeight * 0.38;
+  let currentSection = null;
+  linkedSections.forEach(section => {
+    if (section.offsetTop <= marker) currentSection = section.id;
+  });
+
+  sectionLinks.forEach(link => {
+    const isCurrent = link.getAttribute('href') === `#${currentSection}`;
+    if (isCurrent) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+}
+
+let navigationFrame = null;
+window.addEventListener('scroll', () => {
+  if (navigationFrame) return;
+  navigationFrame = requestAnimationFrame(() => {
+    updateNavigationState();
+    navigationFrame = null;
+  });
+}, { passive: true });
+updateNavigationState();
 document.querySelector('#year').textContent = new Date().getFullYear();

@@ -67,3 +67,29 @@ h2{font-size:clamp(40px,3.8vw,57px)}
   .service-item p{font-size:1rem}
   .service-arrow{top:20px;right:20px}
 }
+
+/* Refined desktop navigation. */
+@media(min-width:761px){
+  .site-header{position:sticky;top:0;height:82px;border-bottom:1px solid rgba(113,36,60,.1);background:rgba(248,245,240,.94);box-shadow:0 1px 0 rgba(255,255,255,.7);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:box-shadow .25s ease,background .25s ease;z-index:50}
+  .site-header.scrolled{background:rgba(248,245,240,.985);box-shadow:0 10px 35px rgba(71,22,39,.1)}
+  .site-header .navigation{width:min(1420px,92%);height:82px;gap:24px}
+  .site-header .brand{gap:12px;flex:0 0 auto}
+  .site-header .monogram{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:14px;background:var(--wine);color:#fff8f3;font-size:20px;line-height:1;letter-spacing:-2px}
+  .site-header .brand-name{font-size:18px;font-weight:600;line-height:1.05}
+  .site-header .brand small{margin-top:6px;font-size:.625rem;font-weight:600;line-height:1;letter-spacing:2.1px}
+  .site-header nav{gap:4px;padding:5px;border:1px solid rgba(113,36,60,.1);border-radius:15px;background:rgba(255,255,255,.5)}
+  .site-header nav>a{white-space:nowrap}
+  .site-header nav>a:not(.nav-contact){padding:10px 14px;border-radius:10px;color:#59464c;font-size:.875rem;transition:color .2s ease,background .2s ease}
+  .site-header nav>a:not(.nav-contact):hover,.site-header nav>a:not(.nav-contact)[aria-current="page"]{background:#f0e3e5;color:var(--wine)}
+  .site-header .nav-contact{margin-left:5px;padding:11px 17px;border:0;border-radius:10px;background:var(--wine);color:#fff8f3;gap:19px;box-shadow:0 7px 18px rgba(113,36,60,.16);transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+  .site-header .nav-contact:hover{background:var(--wine-dark);color:#fff8f3;box-shadow:0 9px 24px rgba(71,22,39,.22);transform:translateY(-1px)}
+  .site-header .nav-contact[aria-current="page"]{background:var(--wine-dark)}
+  .hero{height:min(788px,calc(100svh - 82px))}
+}
+@media(min-width:761px) and (max-width:960px){
+  .site-header .navigation{width:94%;gap:14px}
+  .site-header .brand-name{font-size:16px}
+  .site-header .brand small{display:none}
+  .site-header nav>a:not(.nav-contact){padding:9px 9px;font-size:.8125rem}
+  .site-header .nav-contact{padding:10px 12px;gap:10px;font-size:.8125rem}
+}
